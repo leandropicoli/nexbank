@@ -22,5 +22,15 @@ namespace NexBank.Domain.Entities
             Balance = newBalance;
         }
 
+        public void Debit(decimal value)
+        {
+            Balance -= value;
+        }
+
+        public void Credit(decimal value)
+        {
+            Balance += value;
+        }
+
     }
 }
