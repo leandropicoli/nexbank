@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <h5 class="card-title">Saldo disponivel</h5>
-            <p class="card-text"> {{account.balance | currency:'R$'}}</p>
+            <p class="card-text"> {{account.balance | currency:'R$' + ' '}}</p>
             <a class="btn btn-primary" ng-click="enableExtract()">Ver extrato</a>
         </div>
     </div>
@@ -22,22 +22,8 @@
     <br>
     <div class="card" ng-show="showExtractCard">
 
-        <script>
-            $().datepicker({
-                format: 'yyyy-mm-dd'
-            });
-            $('[data-toggle="datepicker"]').datepicker();
-
-            $().on('pick.datepicker', function (e) {
-                if (e.date < new Date()) {
-                    e.preventDefault(); // Prevent to pick the date
-                }
-            });
-        </script>
-
-
         <div class="card-header">
-            <i class="fa fa-money-check-alt text-muted"></i> <span>Extrato</span>
+            <i class="fa fa-receipt text-muted"></i> <span>Extrato</span>
         </div>
         <div class="card-body">
             <form>
@@ -85,7 +71,7 @@
                     <tbody>
                         <tr ng-repeat="item in extract.transactions">
                             <th scope="row">{{item.createDate}}</th>
-                            <th>{{item.value | currency:'R$'}}</th>
+                            <th>{{item.value | currency:'R$' + ' '}}</th>
                             <th>{{item.description}}</th>
                         </tr>
                     </tbody>
@@ -96,11 +82,11 @@
                 <div class="float-right">
                     <div>
                         <strong>Saldo Inicial</strong>
-                        <span>{{extract.initialAccountBalance | currency:'R$'}}</span>
+                        <span>{{extract.initialAccountBalance | currency:'R$' + ' '}}</span>
                     </div>
                     <div>
                         <strong>Saldo Final</strong>
-                        <span>{{extract.finishAccountBalance | currency:'R$'}}</span>
+                        <span>{{extract.finishAccountBalance | currency:'R$' + ' '}}</span>
                     </div>
                 </div>
             </div>

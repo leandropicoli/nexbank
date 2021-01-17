@@ -32,5 +32,9 @@
                 }
             )
         }
+
+        $scope.goToAccounts = function () {
+            $location.path('/accounts-list');
+        }
     }
 })();

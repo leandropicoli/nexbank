@@ -12,7 +12,7 @@
 
         return {
             getAllAccounts: function () {
-                console.log('vai buscar as contas');
+                return $http.get(url + 'getAll')
             },
             createAccount: function (account) {
                 return $http.post(url, account)

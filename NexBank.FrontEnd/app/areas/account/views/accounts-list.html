@@ -1,0 +1,21 @@
+<style>
+    .container {
+        margin: 20px;
+    }
+
+    .card {
+        margin: 10px
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div ng-repeat="account in accounts" class="card col-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{account.name}}</h5>
+                <p class="card-text">{{account.balance | currency: 'R$' + ' '}}</p>
+                <a class="btn btn-primary" ng-click=goToAccount(account)>Acessar conta</a>
+            </div>
+        </div>
+    </div>
+</div>
