@@ -34,7 +34,7 @@
         $scope.filterDateTo = '';
         $scope.transactionType = '';
 
-        $scope.transactions = null;
+        $scope.extract = null;
         $scope.showTransactions = false;
 
         $scope.enableExtract = function () {
@@ -51,7 +51,7 @@
             promisse.then(
                 function (result) {
                     console.log(result)
-                    $scope.transactions = result.data;
+                    $scope.extract = result.data;
                     $scope.showTransactions = true;
                 },
                 function (error) {

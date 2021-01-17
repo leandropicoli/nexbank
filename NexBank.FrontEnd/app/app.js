@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app', ['ngRoute', 'ngAnimate']);
+    var app = angular.module('app', ['ngRoute', 'ngAnimate', '720kb.datepicker']);
 
     app.config(function ($routeProvider) {
         $routeProvider
@@ -23,4 +23,5 @@
     app.controller('AppCtrl', function AppCtrl($scope, $http) {
 
     });
+
 })();

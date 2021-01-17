@@ -22,18 +22,18 @@ namespace NexBank.Domain.Services
             Guid accountId)
         {
             var transactions = _transactionRepository.GetTransactions(dateFrom, dateTo, transactionType, accountId);
-            if (transactions.Any()) return new TransactionsListDTO();
+            if (!transactions.Any()) return new TransactionsListDTO();
 
             var transactionsList = new TransactionsListDTO(
                 accountId,
                 transactions.First().AccountBalanceBefore,
-                transactions.First().AccountBalanceBefore);
+                transactions.Last().AccountBalanceAfter);
 
             foreach (var item in transactions)
             {
                 transactionsList.Transactions.Add(
                     new TransactionDTO(
-                        item.CreateDate.ToString("dd/MM/yyyy HH:mm"),
+                        item.CreateDate.ToString("dd/MM/yyyy HH:mm:ss"),
                         item.Description,
                         item.Value));
             }

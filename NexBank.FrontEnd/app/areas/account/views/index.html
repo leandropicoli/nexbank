@@ -21,58 +21,72 @@
 
     <br>
     <div class="card" ng-show="showExtractCard">
+
+        <script>
+            $().datepicker({
+                format: 'yyyy-mm-dd'
+            });
+            $('[data-toggle="datepicker"]').datepicker();
+
+            $().on('pick.datepicker', function (e) {
+                if (e.date < new Date()) {
+                    e.preventDefault(); // Prevent to pick the date
+                }
+            });
+        </script>
+
+
         <div class="card-header">
             <i class="fa fa-money-check-alt text-muted"></i> <span>Extrato</span>
         </div>
         <div class="card-body">
             <form>
                 <div class="form-row">
-                    <div class="col-md-3 mb-2">
-                        <label>Inicio</label>
-                        <input type="text" class="form-control date-picker" placeholder="Data inicial"
-                            ng-model="filterDateFrom">
+                    <div class="col-md-4 mb-2">
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" class="form-control" placeholder="Data inicial"
+                                ng-model="filterDateFrom">
+                        </datepicker>
                     </div>
 
-                    <div class="col-md-3 mb-2">
-                        <label>Final</label>
-                        <input type="text" class="form-control date-picker" placeholder="Data final"
-                            ng-model="filterDateTo">
+                    <div class="col-md-4 mb-2">
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" class="form-control" placeholder="Data final" ng-model="filterDateTo">
+                        </datepicker>
+
                     </div>
 
                     <div class="form-group col-md-3 mb-2">
-                        <label>Operação</label>
                         <select class="form-control" ng-model="transactionType">
-                            <option selected>Escolha...</option>
-                            <option>Todas</option>
+                            <option value="99">Todas</option>
                             <option value="1">Credito</option>
                             <option value="0">Debito</option>
                         </select>
                     </div>
 
-                    <div class="form-group col-md-3 mb-2">
-                        <button ng-click="getTransactions()" class="align-right"><i class="fa fa-search"></i></button>
+                    <div class="form-group col-md-1 mb-2">
+                        <a ng-click="getTransactions()" class="btn"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
 
             </form>
 
-            <br>
+
             <div ng-if="showTransactions">
+                <br>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Data</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Descrição</th>
-                            <th scope="col">Saldo após</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in transactions">
+                        <tr ng-repeat="item in extract.transactions">
                             <th scope="row">{{item.createDate}}</th>
-                            <th>{{item.value}}</th>
+                            <th>{{item.value | currency:'R$'}}</th>
                             <th>{{item.description}}</th>
-                            <th>{{item.accountBalanceAfter | currency:'R$'}}</th>
                         </tr>
                     </tbody>
                 </table>
@@ -82,11 +96,11 @@
                 <div class="float-right">
                     <div>
                         <strong>Saldo Inicial</strong>
-                        <span>2000</span>
+                        <span>{{extract.initialAccountBalance | currency:'R$'}}</span>
                     </div>
                     <div>
                         <strong>Saldo Final</strong>
-                        <span>3000</span>
+                        <span>{{extract.finishAccountBalance | currency:'R$'}}</span>
                     </div>
                 </div>
             </div>
