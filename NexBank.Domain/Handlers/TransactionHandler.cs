@@ -27,6 +27,9 @@ namespace NexBank.Domain.Handlers
 
             var account = _accountRepository.GetById(command.AccountId);
 
+            if (account == null)
+                return new GenericCommandResult(false, "Conta não localizada", "Não foi possivel localizar a conta");
+
             //TODO: Criar uma forma melhor de processar os pgtos
             if (command.TransactionType == Enums.ETransactionType.Credit)
             {

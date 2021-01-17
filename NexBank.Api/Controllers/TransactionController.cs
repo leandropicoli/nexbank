@@ -1,6 +1,10 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using NexBank.Domain.Commands;
 using NexBank.Domain.Commands.TransactionCommands;
+using NexBank.Domain.Entities;
+using NexBank.Domain.Enums;
 using NexBank.Domain.Handlers;
 using NexBank.Domain.Repositories;
 
@@ -29,6 +33,17 @@ namespace NexBank.Api.Controllers
         public GenericCommandResult CreateTransaction(CreateTransactionCommand command)
         {
             return (GenericCommandResult)_transactionHandler.Handle(command);
+        }
+
+        [Route("getTransactions")]
+        [HttpGet]
+        public IEnumerable<Transaction> GetTransactions(
+            DateTime dateFrom,
+            DateTime dateTo,
+            ETransactionType transactionType,
+            Guid accountId)
+        {
+            return _transactionRepository.GetTransactions(dateFrom, dateTo, transactionType, accountId);
         }
     }
 }
