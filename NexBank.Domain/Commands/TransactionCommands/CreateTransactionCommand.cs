@@ -8,6 +8,32 @@ namespace NexBank.Domain.Commands.TransactionCommands
 {
     public class CreateTransactionCommand : Notifiable, ICommand
     {
+        public CreateTransactionCommand(
+            Guid accountId,
+            string description,
+            ETransactionType transactionType,
+            decimal value)
+        {
+            AccountId = accountId;
+            Description = description;
+            TransactionType = transactionType;
+            Value = value;
+        }
+
+        public CreateTransactionCommand(
+            Guid accountId,
+            DateTime createDate,
+            string description,
+            ETransactionType transactionType,
+            decimal value)
+        {
+            AccountId = accountId;
+            CreateDateTime = createDate;
+            Description = description;
+            TransactionType = transactionType;
+            Value = value;
+        }
+
         public Guid AccountId { get; set; }
         public DateTime? CreateDateTime { get; set; }
         public string Description { get; set; }

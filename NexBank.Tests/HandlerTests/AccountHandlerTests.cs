@@ -2,7 +2,7 @@ using NexBank.Domain.Commands;
 using NexBank.Domain.Commands.AccountCommands;
 using NexBank.Domain.Handlers;
 using NexBank.Domain.Repositories;
-using NexBank.Tests.Repositories;
+using NSubstitute;
 using Xunit;
 
 namespace NexBank.Tests.HandlerTests
@@ -14,7 +14,7 @@ namespace NexBank.Tests.HandlerTests
 
         public AccountHandlerTests()
         {
-            _accountRepository = new FakeAccountRepository();
+            _accountRepository = Substitute.For<IAccountRepository>();
             _accountHandler = new AccountHandler(_accountRepository);
         }
 

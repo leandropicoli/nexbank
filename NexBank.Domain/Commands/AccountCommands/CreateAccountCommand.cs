@@ -6,6 +6,12 @@ namespace NexBank.Domain.Commands.AccountCommands
 {
     public class CreateAccountCommand : Notifiable, ICommand
     {
+        public CreateAccountCommand(string name, string document)
+        {
+            Name = name;
+            Document = document;
+        }
+
         public string Name { get; set; }
         public string Document { get; set; }
 
