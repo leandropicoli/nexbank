@@ -21,12 +21,12 @@ namespace NexBank.Tests.QueriesTests
 
             _transactions = new List<Transaction>();
 
-            _transactions.Add(new Transaction(_account1.Id, "desc", ETransactionType.Credit, 100M, 100M));
-            _transactions.Add(new Transaction(_account1.Id, "desc", ETransactionType.Debit, 100M, 100M));
-            _transactions.Add(new Transaction(_account1.Id, DateTime.Now.AddDays(5), "desc", ETransactionType.Credit, 100M, 100M));
-            _transactions.Add(new Transaction(_account1.Id, DateTime.Now.AddDays(5), "desc", ETransactionType.Debit, 100M, 100M));
-            _transactions.Add(new Transaction(_account2.Id, "desc", ETransactionType.Credit, 100M, 100M));
-            _transactions.Add(new Transaction(_account2.Id, "desc", ETransactionType.Debit, 100M, 100M));
+            _transactions.Add(new Transaction(_account1.Id, "desc", ETransactionType.Credit, 100M, 100M, 0M));
+            _transactions.Add(new Transaction(_account1.Id, "desc", ETransactionType.Debit, 100M, 100M, 0M));
+            _transactions.Add(new Transaction(_account1.Id, DateTime.Now.AddDays(5), "desc", ETransactionType.Credit, 100M, 100M, 0M));
+            _transactions.Add(new Transaction(_account1.Id, DateTime.Now.AddDays(5), "desc", ETransactionType.Debit, 100M, 100M, 0M));
+            _transactions.Add(new Transaction(_account2.Id, "desc", ETransactionType.Credit, 100M, 100M, 0M));
+            _transactions.Add(new Transaction(_account2.Id, "desc", ETransactionType.Debit, 100M, 100M, 0M));
         }
 
         [Fact]

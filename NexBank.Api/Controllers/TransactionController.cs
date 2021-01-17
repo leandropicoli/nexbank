@@ -6,7 +6,9 @@ using NexBank.Domain.Commands.TransactionCommands;
 using NexBank.Domain.Entities;
 using NexBank.Domain.Enums;
 using NexBank.Domain.Handlers;
+using NexBank.Domain.Models;
 using NexBank.Domain.Repositories;
+using NexBank.Domain.Services;
 
 namespace NexBank.Api.Controllers
 {
@@ -37,13 +39,14 @@ namespace NexBank.Api.Controllers
 
         [Route("getTransactions")]
         [HttpGet]
-        public IEnumerable<Transaction> GetTransactions(
+        public TransactionsListDTO GetTransactions(
             DateTime dateFrom,
             DateTime dateTo,
             ETransactionType transactionType,
             Guid accountId)
         {
-            return _transactionRepository.GetTransactions(dateFrom, dateTo, transactionType, accountId);
+            var transactionService = new TransactionsFilterService(_transactionRepository);
+            return transactionService.GetAndFilterTransactions(dateFrom, dateTo, transactionType, accountId);
         }
     }
 }

@@ -5,7 +5,13 @@ namespace NexBank.Domain.Entities
 {
     public class Transaction : Entity
     {
-        public Transaction(Guid accountId, string description, ETransactionType transactionType, decimal value, decimal accountBalanceAfter)
+        public Transaction(
+            Guid accountId,
+            string description,
+            ETransactionType transactionType,
+            decimal value,
+            decimal accountBalanceAfter,
+            decimal accountBalanceBefore)
         {
             AccountId = accountId;
             CreateDate = DateTime.Now;
@@ -13,9 +19,17 @@ namespace NexBank.Domain.Entities
             TransactionType = transactionType;
             Value = value;
             AccountBalanceAfter = accountBalanceAfter;
+            AccountBalanceBefore = accountBalanceBefore;
         }
 
-        public Transaction(Guid accountId, DateTime createDate, string description, ETransactionType transactionType, decimal value, decimal accountBalanceAfter)
+        public Transaction(
+            Guid accountId,
+            DateTime createDate,
+            string description,
+            ETransactionType transactionType,
+            decimal value,
+            decimal accountBalanceAfter,
+            decimal accountBalanceBefore)
         {
             AccountId = accountId;
             CreateDate = createDate;
@@ -23,6 +37,7 @@ namespace NexBank.Domain.Entities
             TransactionType = transactionType;
             Value = value;
             AccountBalanceAfter = accountBalanceAfter;
+            AccountBalanceBefore = accountBalanceBefore;
         }
 
         public Guid AccountId { get; private set; }
@@ -31,6 +46,7 @@ namespace NexBank.Domain.Entities
         public string Description { get; private set; }
         public ETransactionType TransactionType { get; private set; }
         public decimal Value { get; private set; }
+        public decimal AccountBalanceBefore { get; private set; }
         public decimal AccountBalanceAfter { get; private set; }
     }
 }
