@@ -11,6 +11,10 @@ namespace NexBank.Domain.Commands.AccountCommands
             Name = name;
             Document = document;
         }
+        public CreateAccountCommand()
+        {
+
+        }
 
         public string Name { get; set; }
         public string Document { get; set; }

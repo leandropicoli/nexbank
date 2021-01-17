@@ -34,6 +34,11 @@ namespace NexBank.Domain.Commands.TransactionCommands
             Value = value;
         }
 
+        public CreateTransactionCommand()
+        {
+
+        }
+
         public Guid AccountId { get; set; }
         public DateTime? CreateDateTime { get; set; }
         public string Description { get; set; }
