@@ -12,6 +12,14 @@ namespace NexBank.Domain.Entities
             Balance = 0M;
         }
 
+        public Account(string name, string document, decimal balance)
+        {
+            CreateDate = DateTime.Now;
+            Name = name;
+            Document = document;
+            Balance = balance;
+        }
+
         public DateTime CreateDate { get; private set; }
         public string Name { get; private set; }
         public string Document { get; private set; }
