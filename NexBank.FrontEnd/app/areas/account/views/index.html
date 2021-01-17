@@ -1,9 +1,12 @@
 <div class="container" ng-controller="AccountController">
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">NexBank</a>
-    </nav>
+    </nav> -->
 
+    <br>
     <h3>Bem vindo, {{account.name}}</h3>
+
+    <br>
 
     <div class="card">
         <div class="card-header">
@@ -12,7 +15,82 @@
         <div class="card-body">
             <h5 class="card-title">Saldo disponivel</h5>
             <p class="card-text"> {{account.balance | currency:'R$'}}</p>
-            <a href="#" class="btn btn-primary">Ver extrato</a>
+            <a class="btn btn-primary" ng-click="enableExtract()">Ver extrato</a>
+        </div>
+    </div>
+
+    <br>
+    <div class="card" ng-show="showExtractCard">
+        <div class="card-header">
+            <i class="fa fa-money-check-alt text-muted"></i> <span>Extrato</span>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="col-md-3 mb-2">
+                        <label>Inicio</label>
+                        <input type="text" class="form-control date-picker" placeholder="Data inicial"
+                            ng-model="filterDateFrom">
+                    </div>
+
+                    <div class="col-md-3 mb-2">
+                        <label>Final</label>
+                        <input type="text" class="form-control date-picker" placeholder="Data final"
+                            ng-model="filterDateTo">
+                    </div>
+
+                    <div class="form-group col-md-3 mb-2">
+                        <label>Operação</label>
+                        <select class="form-control" ng-model="transactionType">
+                            <option selected>Escolha...</option>
+                            <option>Todas</option>
+                            <option value="1">Credito</option>
+                            <option value="0">Debito</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3 mb-2">
+                        <button ng-click="getTransactions()" class="align-right"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+            </form>
+
+            <br>
+            <div ng-if="showTransactions">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Saldo após</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in transactions">
+                            <th scope="row">{{item.createDate}}</th>
+                            <th>{{item.value}}</th>
+                            <th>{{item.description}}</th>
+                            <th>{{item.accountBalanceAfter | currency:'R$'}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+                <div class="float-right">
+                    <div>
+                        <strong>Saldo Inicial</strong>
+                        <span>2000</span>
+                    </div>
+                    <div>
+                        <strong>Saldo Final</strong>
+                        <span>3000</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
