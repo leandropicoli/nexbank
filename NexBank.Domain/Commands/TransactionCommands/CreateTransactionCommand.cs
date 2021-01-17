@@ -20,27 +20,12 @@ namespace NexBank.Domain.Commands.TransactionCommands
             Value = value;
         }
 
-        public CreateTransactionCommand(
-            Guid accountId,
-            DateTime createDate,
-            string description,
-            ETransactionType transactionType,
-            decimal value)
-        {
-            AccountId = accountId;
-            CreateDateTime = createDate;
-            Description = description;
-            TransactionType = transactionType;
-            Value = value;
-        }
-
         public CreateTransactionCommand()
         {
 
         }
 
         public Guid AccountId { get; set; }
-        public DateTime? CreateDateTime { get; set; }
         public string Description { get; set; }
         public ETransactionType TransactionType { get; set; }
         public decimal Value { get; set; }

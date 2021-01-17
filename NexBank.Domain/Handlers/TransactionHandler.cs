@@ -59,14 +59,7 @@ namespace NexBank.Domain.Handlers
 
             Transaction transaction;
 
-            if (command.CreateDateTime.HasValue)
-            {
-                transaction = new Transaction(account.Id, command.CreateDateTime.Value, command.Description, command.TransactionType, command.Value, account.Balance, accountBalanceBefore);
-            }
-            else
-            {
-                transaction = new Transaction(account.Id, command.Description, command.TransactionType, command.Value, account.Balance, accountBalanceBefore);
-            }
+            transaction = new Transaction(account.Id, command.Description, command.TransactionType, command.Value, account.Balance, accountBalanceBefore);
 
             _transactionRepository.SaveTransaction(transaction);
             _accountRepository.UpdateAccount(account);
