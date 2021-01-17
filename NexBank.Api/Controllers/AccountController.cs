@@ -15,11 +15,13 @@ namespace NexBank.Api.Controllers
     {
         private readonly AccountHandler _handler;
         private readonly IAccountRepository _accountRepository;
+        private readonly IUnitOfWork _uow;
 
-        public AccountController(AccountHandler handler, IAccountRepository accountRepository)
+        public AccountController(AccountHandler handler, IAccountRepository accountRepository, IUnitOfWork uow)
         {
             _handler = handler;
             _accountRepository = accountRepository;
+            _uow = uow;
         }
 
         [Route("")]

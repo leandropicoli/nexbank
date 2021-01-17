@@ -13,11 +13,16 @@ namespace NexBank.Domain.Handlers
     {
         private readonly IAccountRepository _accountRepository;
         private readonly ITransactionRepository _transactionRepository;
+        private readonly IUnitOfWork _uow;
 
-        public TransactionHandler(IAccountRepository accountRepository, ITransactionRepository transactionRepository)
+        public TransactionHandler(
+            IAccountRepository accountRepository,
+            ITransactionRepository transactionRepository,
+            IUnitOfWork uow)
         {
             _accountRepository = accountRepository;
             _transactionRepository = transactionRepository;
+            _uow = uow;
         }
 
         public ICommandResult Handle(CreateTransactionCommand command)
@@ -63,6 +68,7 @@ namespace NexBank.Domain.Handlers
 
             _transactionRepository.SaveTransaction(transaction);
             _accountRepository.UpdateAccount(account);
+            _uow.Commit();
 
             return new GenericCommandResult(true, "Transaçao realizada com sucesso", transaction);
         }

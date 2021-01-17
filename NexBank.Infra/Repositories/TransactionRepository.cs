@@ -30,7 +30,6 @@ namespace NexBank.Infra.Repositories
         public void SaveTransaction(Transaction transaction)
         {
             _context.Transactions.Add(transaction);
-            _context.SaveChanges();
         }
     }
 }

@@ -16,12 +16,14 @@ namespace NexBank.Tests.HandlerTests
         private readonly IAccountRepository _accountRepository;
         private readonly ITransactionRepository _transactionRepository;
         private readonly TransactionHandler _transactionHandler;
+        private readonly IUnitOfWork _uow;
 
         public TransactionHandlerTests()
         {
             _accountRepository = Substitute.For<IAccountRepository>();
             _transactionRepository = Substitute.For<ITransactionRepository>();
-            _transactionHandler = new TransactionHandler(_accountRepository, _transactionRepository);
+            _uow = Substitute.For<IUnitOfWork>();
+            _transactionHandler = new TransactionHandler(_accountRepository, _transactionRepository, _uow);
         }
 
         [Fact]

@@ -11,11 +11,14 @@ namespace NexBank.Tests.HandlerTests
     {
         private readonly IAccountRepository _accountRepository;
         private readonly AccountHandler _accountHandler;
+        private readonly IUnitOfWork _uow;
 
         public AccountHandlerTests()
         {
             _accountRepository = Substitute.For<IAccountRepository>();
-            _accountHandler = new AccountHandler(_accountRepository);
+            _uow = Substitute.For<IUnitOfWork>();
+
+            _accountHandler = new AccountHandler(_accountRepository, _uow);
         }
 
         [Fact]

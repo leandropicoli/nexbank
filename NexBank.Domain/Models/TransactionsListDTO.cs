@@ -12,12 +12,12 @@ namespace NexBank.Domain.Models
         {
             AccountId = accountId;
             InitialAccountBalance = initialAccountBalance;
-            FinishAccountBalance = finishAccountBalance;
+            FinalAccountBalance = finishAccountBalance;
             Transactions = new List<TransactionDTO>();
         }
         public Guid AccountId { get; set; }
         public decimal InitialAccountBalance { get; set; }
-        public decimal FinishAccountBalance { get; set; }
+        public decimal FinalAccountBalance { get; set; }
         public List<TransactionDTO> Transactions { get; set; }
     }
 }

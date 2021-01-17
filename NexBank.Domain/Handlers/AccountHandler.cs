@@ -11,9 +11,11 @@ namespace NexBank.Domain.Handlers
     public class AccountHandler : Notifiable, IHandler<CreateAccountCommand>
     {
         private readonly IAccountRepository _accountRepository;
-        public AccountHandler(IAccountRepository accountRepository)
+        private readonly IUnitOfWork _uow;
+        public AccountHandler(IAccountRepository accountRepository, IUnitOfWork uow)
         {
             _accountRepository = accountRepository;
+            _uow = uow;
         }
 
         public ICommandResult Handle(CreateAccountCommand command)
@@ -24,6 +26,7 @@ namespace NexBank.Domain.Handlers
 
             var account = new Account(command.Name, command.Document);
             _accountRepository.AddAccount(account);
+            _uow.Commit();
 
             return new GenericCommandResult(true, "Conta criada com sucesso", account);
         }

@@ -19,15 +19,18 @@ namespace NexBank.Api.Controllers
         private readonly IAccountRepository _accountRepository;
         private readonly ITransactionRepository _transactionRepository;
         private readonly TransactionHandler _transactionHandler;
+        private readonly IUnitOfWork _uow;
 
         public TransactionController(
             IAccountRepository accountRepository,
             ITransactionRepository transactionRepository,
-            TransactionHandler transactionHandler)
+            TransactionHandler transactionHandler,
+            IUnitOfWork uow)
         {
             _accountRepository = accountRepository;
             _transactionRepository = transactionRepository;
             _transactionHandler = transactionHandler;
+            _uow = uow;
         }
 
         [Route("")]
