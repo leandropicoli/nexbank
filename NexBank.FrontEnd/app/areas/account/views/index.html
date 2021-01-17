@@ -1,0 +1,19 @@
+<div class="container" ng-controller="AccountController">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">NexBank</a>
+    </nav>
+
+    <h3>Bem vindo, {{account.name}}</h3>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-money-check-alt text-muted"></i> <span>Conta</span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Saldo disponivel</h5>
+            <p class="card-text"> {{account.balance | currency:'R$'}}</p>
+            <a href="#" class="btn btn-primary">Ver extrato</a>
+        </div>
+    </div>
+
+</div>

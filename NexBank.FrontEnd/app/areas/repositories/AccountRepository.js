@@ -8,7 +8,7 @@
     AccountRepository.$inject = ['$http'];
 
     function AccountRepository($http) {
-        var url = "https://localhost:5001/v1/account"
+        var url = "https://localhost:5001/v1/account/"
 
         return {
             getAllAccounts: function () {
@@ -16,6 +16,9 @@
             },
             createAccount: function (account) {
                 return $http.post(url, account)
+            },
+            getById: function (accountId) {
+                return $http.get(url + 'getById?id=' + accountId)
             }
         }
     }

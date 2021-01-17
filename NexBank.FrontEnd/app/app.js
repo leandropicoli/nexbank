@@ -9,6 +9,10 @@
                 controller: 'HomeController',
                 templateUrl: 'app/areas/home/views/index.html'
             })
+            .when('/account', {
+                controller: 'AccountController',
+                templateUrl: 'app/areas/account/views/index.html'
+            })
             .otherwise({
                 controller: 'HomeCtrl as vm',
                 templateUrl: '404.html',
