@@ -17,6 +17,12 @@ namespace NexBank.Infra.Repositories
             _context = context;
         }
 
+        public void AddAccount(Account account)
+        {
+            _context.Accounts.Add(account);
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Account> GetAll()
         {
             return _context.Accounts
@@ -31,9 +37,9 @@ namespace NexBank.Infra.Repositories
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public void SaveAccount(Account account)
+        public void UpdateAccount(Account account)
         {
-            _context.Accounts.Add(account);
+            _context.Entry(account).State = EntityState.Modified;
             _context.SaveChanges();
         }
     }

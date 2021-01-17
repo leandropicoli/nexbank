@@ -52,7 +52,7 @@ namespace NexBank.Domain.Handlers
             }
 
             _transactionRepository.SaveTransaction(transaction);
-            _accountRepository.SaveAccount(account);
+            _accountRepository.UpdateAccount(account);
 
             return new GenericCommandResult(true, "Transaçao realizada com sucesso", transaction);
         }

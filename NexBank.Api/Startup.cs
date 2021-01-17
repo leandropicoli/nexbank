@@ -41,7 +41,9 @@ namespace NexBank.Api
             });
 
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddTransient<AccountHandler, AccountHandler>();
+            services.AddTransient<TransactionHandler, TransactionHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

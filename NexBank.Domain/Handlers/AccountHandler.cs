@@ -23,7 +23,7 @@ namespace NexBank.Domain.Handlers
                 return new GenericCommandResult(false, "Erro ao cadastrar nova conta", command.Notifications);
 
             var account = new Account(command.Name, command.Document);
-            _accountRepository.SaveAccount(account);
+            _accountRepository.AddAccount(account);
 
             return new GenericCommandResult(true, "Conta criada com sucesso", account);
         }

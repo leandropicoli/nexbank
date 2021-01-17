@@ -6,7 +6,8 @@ namespace NexBank.Domain.Repositories
 {
     public interface IAccountRepository
     {
-        void SaveAccount(Account account);
+        void AddAccount(Account account);
+        void UpdateAccount(Account account);
         IEnumerable<Account> GetAll();
         Account GetById(Guid id);
     }
