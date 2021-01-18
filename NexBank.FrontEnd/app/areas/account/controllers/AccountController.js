@@ -42,6 +42,11 @@
         }
 
         $scope.getTransactions = function () {
+            if ($scope.filterDateFrom == '' || $scope.filterDateTo == '' || $scope.transactionType == '') {
+                toastr["error"]("Por favor, preencha todos os dados do extrato.", "Erro")
+                return;
+            }
+
             var promisse = TransactionRepository.getTransactions(
                 $scope.filterDateFrom,
                 $scope.filterDateTo,
@@ -50,7 +55,6 @@
 
             promisse.then(
                 function (result) {
-                    console.log(result)
                     $scope.extract = result.data;
                     $scope.showTransactions = true;
                 },

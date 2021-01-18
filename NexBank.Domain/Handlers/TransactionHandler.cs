@@ -58,7 +58,7 @@ namespace NexBank.Domain.Handlers
             var accountBalanceBefore = account.Balance;
 
             if (account.Balance < command.Value)
-                return new GenericCommandResult(false, "Saldo insuficiente", "Não há salda suficiente para realizar a operaçao");
+                return new GenericCommandResult(false, "Saldo insuficiente", "Não há saldo suficiente para realizar a operaçao");
 
             account.Debit(command.Value);
 
