@@ -1,6 +1,5 @@
 using System;
 using NexBank.Domain.Commands.TransactionCommands;
-using NexBank.Domain.Enums;
 using Xunit;
 
 namespace NexBank.Tests.CommandsTests

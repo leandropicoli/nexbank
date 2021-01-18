@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using NexBank.Domain.Commands;
 using NexBank.Domain.Commands.TransactionCommands;
+using NexBank.Domain.DTOs;
 using NexBank.Domain.Entities;
 using NexBank.Domain.Enums;
 using NexBank.Domain.Handlers;
-using NexBank.Domain.Models;
 using NexBank.Domain.Repositories;
 using NexBank.Domain.Services;
 

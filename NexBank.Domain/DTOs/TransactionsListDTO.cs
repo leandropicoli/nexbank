@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace NexBank.Domain.Models
+namespace NexBank.Domain.DTOs
 {
     public class TransactionsListDTO
     {
         public TransactionsListDTO()
         {
+            Transactions = new List<TransactionDTO>();
         }
         public TransactionsListDTO(Guid accountId, decimal initialAccountBalance, decimal finishAccountBalance)
         {

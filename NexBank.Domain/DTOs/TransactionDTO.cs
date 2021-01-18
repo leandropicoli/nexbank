@@ -1,4 +1,4 @@
-namespace NexBank.Domain.Models
+namespace NexBank.Domain.DTOs
 {
     public class TransactionDTO
     {

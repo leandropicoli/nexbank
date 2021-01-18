@@ -2,7 +2,6 @@ using System;
 using NexBank.Domain.Commands;
 using NexBank.Domain.Commands.TransactionCommands;
 using NexBank.Domain.Entities;
-using NexBank.Domain.Enums;
 using NexBank.Domain.Handlers;
 using NexBank.Domain.Repositories;
 using NSubstitute;

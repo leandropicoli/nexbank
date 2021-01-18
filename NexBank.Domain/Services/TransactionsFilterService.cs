@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
+using NexBank.Domain.DTOs;
 using NexBank.Domain.Enums;
-using NexBank.Domain.Models;
 using NexBank.Domain.Repositories;
 
 namespace NexBank.Domain.Services
