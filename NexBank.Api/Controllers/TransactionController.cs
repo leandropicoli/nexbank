@@ -33,12 +33,20 @@ namespace NexBank.Api.Controllers
             _uow = uow;
         }
 
-        [Route("")]
+        [Route("credit")]
         [HttpPost]
-        public GenericCommandResult CreateTransaction(CreateTransactionCommand command)
+        public GenericCommandResult CreditTransaction(CreditTransactionCommand command)
         {
             return (GenericCommandResult)_transactionHandler.Handle(command);
         }
+
+        [Route("debit")]
+        [HttpPost]
+        public GenericCommandResult DebitTransaction(DebitTransactionCommand command)
+        {
+            return (GenericCommandResult)_transactionHandler.Handle(command);
+        }
+
 
         [Route("getTransactions")]
         [HttpGet]

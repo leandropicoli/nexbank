@@ -11,10 +11,9 @@ namespace NexBank.Tests.CommandsTests
         public void WhenAValidCommandIsGivenShouldBeValid()
         {
             //Given
-            var command = new CreateTransactionCommand(
+            var command = new CreditTransactionCommand(
                 Guid.NewGuid(),
                 "description",
-                ETransactionType.Credit,
                 100M
             );
 
@@ -29,10 +28,9 @@ namespace NexBank.Tests.CommandsTests
         public void WhenAnInvalidcommandIsGivenShouldNotBeValid()
         {
             //Given
-            var command = new CreateTransactionCommand(
+            var command = new CreditTransactionCommand(
                 Guid.Empty,
                 "",
-                ETransactionType.Credit,
                 0M
             );
 

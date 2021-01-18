@@ -30,7 +30,7 @@ namespace NexBank.Tests.HandlerTests
         public void GivenAnInvalidCommandShouldNotCreateTransaction()
         {
             //Given
-            var command = new CreateTransactionCommand(Guid.NewGuid(), "", ETransactionType.Credit, 0M);
+            var command = new CreditTransactionCommand(Guid.NewGuid(), "", 0M);
 
             //When
             var result = (GenericCommandResult)_transactionHandler.Handle(command);
@@ -43,10 +43,9 @@ namespace NexBank.Tests.HandlerTests
         public void GivenAnInnexistentAccountShouldNotCreateTransaction()
         {
             //Given
-            var command = new CreateTransactionCommand(
+            var command = new CreditTransactionCommand(
                 Guid.NewGuid(),
                 "Credito realizado",
-                ETransactionType.Credit,
                 100M);
 
             _accountRepository.GetById(command.AccountId)
@@ -68,10 +67,9 @@ namespace NexBank.Tests.HandlerTests
             _accountRepository.GetById(account.Id)
                     .Returns(account);
 
-            var command = new CreateTransactionCommand(
+            var command = new CreditTransactionCommand(
                 account.Id,
                 "Deposit",
-                ETransactionType.Credit,
                 100M);
 
             //When
@@ -89,10 +87,9 @@ namespace NexBank.Tests.HandlerTests
             _accountRepository.GetById(account.Id)
                     .Returns(account);
 
-            var command = new CreateTransactionCommand(
+            var command = new DebitTransactionCommand(
                 account.Id,
                 "Compra XPTO",
-                ETransactionType.Debit,
                 100M);
 
             //When
