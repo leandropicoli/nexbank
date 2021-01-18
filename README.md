@@ -48,3 +48,4 @@ A tela list-accounts é apenas para propostas de DEMO, para facilitar a troca en
  - Transformar as requisições da API em async
  - Adicionar tratamento de exceções
  - Autenticações
+ - Adicionar loadings no Front-end
